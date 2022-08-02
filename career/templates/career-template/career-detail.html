@@ -1,0 +1,77 @@
+{% extends "partials/_base.html" %}
+{% load static %}
+
+{% load i18n %}
+{% block title %} Career Page {% endblock title %}
+{% block body %}
+<section class="pb-0 pt-4 pb-md-5">
+    <div class="container">
+        <div class="row">
+        
+            <div class="col-12">
+    
+                <!-- Content -->
+                <div class="col-lg-9 order-1">
+                    <!-- Pre title -->
+                    <span> 
+                        <i class="fa fa-map-marker-alt text-primary me-2"> </i>{{ careerd.location }}
+                        <span class="mx-2">|</span>
+                    </span>
+                    
+                    <span>Posted: {{careerd.created_at|timesince}} ago</span><span class="mx-2">|</span>
+                    
+                    <span>
+                        {% if careerd.type == '1' %}
+                            <span class="btn btn-sm btn-info">Full time</span>
+                        {% elif careerd.type == '2' %}
+                            <span class="btn btn-sm btn-info">Part time</span>
+                        {% else %}
+                            <span class="btn btn-sm btn-info">Internship</span>
+                        {% endif %}
+                    </span> <br>
+                    
+                    <span>
+                        <small class="text-truncate">
+                            <i class="far fa-calendar-alt text-danger me-2"></i>DeadLine:
+                            {{careerd.deadline|date:"D d M Y" }}
+                        </small>
+                    </span><span class="mx-2">|</span>
+
+                    <span>
+                        <small>
+                            <i class="far fa-money-bill-alt text-primary me-2"></i>
+                            Salary:{{careerd.salary}}
+                        </small>
+                        
+                    </span> <br>
+                    <h3 class="mt-2 mb-3 ">{{careerd.title}}</h3> <hr>
+                    <!-- Info -->
+                    <p class="lead mt-2">{{careerd.description }}</p>
+                    <hr>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto mt-2">
+                    <a class="btn btn-success" href="{% url 'career:candidateformview' %}">Apply Now</a>
+                </div>
+            </div>
+        
+          <!-- Title and Info END -->
+  
+          <!-- Tags and share START -->
+          <div class="d-lg-flex justify-content-lg-between mt-4">
+            <!-- Social media button -->
+            <div class="align-items-center mb-3 mb-lg-0">
+              <h6 class="mb-2 me-4 d-inline-block">Share on:</h6>
+              <ul class="list-inline mb-0 mb-2 mb-sm-0">
+                <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-facebook" href="#"><i
+                      class="fab fa-fw fa-facebook-f"></i></a> </li>
+                <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-instagram-gradient" href="#"><i
+                      class="fab fa-fw fa-instagram"></i></a> </li>
+                <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-twitter" href="#"><i
+                      class="fab fa-fw fa-twitter"></i></a> </li>
+                <li class="list-inline-item"> <a class="btn px-2 btn-sm bg-linkedin" href="#"><i
+                      class="fab fa-fw fa-linkedin-in"></i></a> </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+{%endblock body%}
